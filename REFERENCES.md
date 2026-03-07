@@ -1,2 +1,0 @@
-All of the novel contents can be found at: `C:\Users\Hyvnt\T\Obsidian\Starpath`
-This contains drafts, description about places, characters, and more. Use this to further understand the context and details of the story in order to create a fitting and engaging design for the website. 
