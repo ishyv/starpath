@@ -6,7 +6,7 @@ export async function load({ params }) {
 	const fileName = `Capitulo ${id}.md`;
 	// Construct the URL for the raw file from the GitHub repository.
 	// Adjust "main" if your default branch is different.
-	const fileUrl = `https://raw.githubusercontent.com/hyvnova/starpath/main/chapters/${encodeURIComponent(fileName)}`;
+	const fileUrl = `https://raw.githubusercontent.com/ishyv/starpath/main/chapters/${encodeURIComponent(fileName)}`;
 
 	const res = await fetch(fileUrl);
 	if (!res.ok) {
@@ -16,7 +16,7 @@ export async function load({ params }) {
 	let content = await res.text();
 
 	// Remove obsidian links
-	content = content.replace("[[", "").replace("]]", "");
+	content = content.replace(/\[\[|\]\]/g, "");
 
 	const html = marked(content);
 	return { content: html, id: parseInt(id) };

@@ -1,45 +1,52 @@
 <script lang="ts">
-  import type { ColorHistory } from "$lib/stores/user_config";
-  import type { Writable } from "stream";
+	import type { ColorHistory } from "$lib/stores/user_config";
 
-    // History of colors in hex
-    export let colors: ColorHistory; 
-
-    // Function that, when called given a color, set's the color 
-    export let set_color: (color: string) => void;
+	let { colors, set_color }: { colors: ColorHistory; set_color: (color: string) => void } = $props();
 </script>
 
-<div
-    class="flex flex-row justify-center items-center
-    p-1 m-1 
-    rounded-md
-    bg-[#222] text-white
-    max-w-md
-    "
->
-    {#each colors as  color}
-        
-        <button
-            style="background-color: {color}"
-            class="rounded-md w-16 h-12
-                flex items-center justify-center
-                border-0 border-white
-                hover:border-2
-                hover:cursor-pointer
-                mx-2
-            "  
-        
-            on:click={() => {
-                set_color(color);
-            }}
-        >
-            <p
-                class="font-thin text-sm text-gray-400"
-            >
-                {color}
-            </p>
-        </button>
-
-    {/each}
-
+<div class="recent-colors">
+	{#each colors as color}
+		<button
+			style="background-color: {color}"
+			class="color-swatch"
+			onclick={() => set_color(color)}
+		>
+			<span class="swatch-label font-ui">{color}</span>
+		</button>
+	{/each}
 </div>
+
+<style>
+	.recent-colors {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem;
+		margin-top: 0.5rem;
+		background: var(--deep);
+		border-radius: 6px;
+	}
+
+	.color-swatch {
+		width: 3.5rem;
+		height: 2.5rem;
+		border-radius: 4px;
+		border: 1px solid var(--border);
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: border-color 0.25s ease;
+	}
+
+	.color-swatch:hover {
+		border-color: var(--teal);
+	}
+
+	.swatch-label {
+		font-size: 8px;
+		color: var(--text-dim);
+		opacity: 0.7;
+	}
+</style>

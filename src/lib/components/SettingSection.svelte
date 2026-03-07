@@ -1,22 +1,45 @@
 <script lang="ts">
-	export let title: string;
-	export let description: string;
+	let { title, description, children }: { title: string; description: string; children: any } = $props();
 </script>
 
-<section
-	class="container flex flex-col justify-center items-center
-			w-4xl p-2 mt-2
-			rounded-lg
-			bg-gray-900
-		"
->
-	<h2 class="text-2xl text-gray-200 m-1">{title}</h2>
-
-	<p class="text-gray-300 m-1 text-pretty">
-		{description}
-	</p>
-
-	<hr class="mb-8" />
-
-	<slot />
+<section class="setting-section">
+	<h2 class="section-title font-display">{title}</h2>
+	<p class="section-desc font-body">{description}</p>
+	<div class="section-divider"></div>
+	{@render children()}
 </section>
+
+<style>
+	.setting-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		padding: 2rem;
+		margin-top: 1rem;
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-left: 2px solid var(--teal-dim);
+		border-radius: 8px;
+	}
+
+	.section-title {
+		font-size: 14px;
+		letter-spacing: 0.2em;
+		color: var(--text-primary);
+		margin: 0 0 0.25rem;
+	}
+
+	.section-desc {
+		color: var(--text-secondary);
+		font-size: 14px;
+		margin: 0 0 1rem;
+	}
+
+	.section-divider {
+		width: 40px;
+		height: 1px;
+		background: var(--border);
+		margin-bottom: 1.5rem;
+	}
+</style>

@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 export async function load() {
     // GitHub API endpoint for the chapters folder in the repository
-    const apiUrl = "https://api.github.com/repos/hyvnova/starpath/contents/chapters";
+    const apiUrl = "https://api.github.com/repos/ishyv/starpath/contents/chapters";
 
     // Fetch the list of files from the repository
     const res = await fetch(apiUrl);

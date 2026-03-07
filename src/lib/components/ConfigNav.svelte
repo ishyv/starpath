@@ -1,7 +1,7 @@
 <script lang="ts">
   import { faCog, faHome } from "@fortawesome/free-solid-svg-icons";
 
-  export let home: boolean = false;
+  let { home = false }: { home?: boolean } = $props();
 
   import Fa from "svelte-fa";
 
