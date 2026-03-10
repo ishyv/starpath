@@ -272,7 +272,7 @@
 								<div class="stat-row">
 									<span class="stat-label font-ui">{stat.label}</span>
 									<div class="stat-bar">
-										<div class="stat-fill" style="width: {stat.value}%"></div>
+										<div class="stat-fill {char.glow === 'teal' ? 'teal-fill' : 'violet-fill'}" style="width: {stat.value}%"></div>
 									</div>
 								</div>
 							{/each}
@@ -853,14 +853,6 @@
 		font-size: 9px;
 		letter-spacing: 0.12em;
 		min-width: 80px;
-	}
-
-	.dossier-teal .stat-fill {
-		background: linear-gradient(to right, var(--teal-dim), var(--teal));
-	}
-
-	.dossier-violet .stat-fill {
-		background: linear-gradient(to right, var(--violet-dim), var(--violet));
 	}
 
 	/* ─── CHAPTERS SECTION ─────────────────── */

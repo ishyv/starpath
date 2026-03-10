@@ -189,10 +189,8 @@
 		initParticles();
 		initRunes();
 
-		window.addEventListener('resize', () => {
-			resize();
-			initParticles();
-		});
+		const handleResize = () => { resize(); initParticles(); };
+		window.addEventListener('resize', handleResize);
 
 		function loop(time: number) {
 			rafId = requestAnimationFrame(loop);
@@ -203,6 +201,7 @@
 
 		return () => {
 			unsub();
+			window.removeEventListener('resize', handleResize);
 		};
 	});
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { tilt } from '$lib/actions/tilt';
 
 	let {
@@ -10,7 +11,7 @@
 		glow?: 'teal' | 'violet' | 'none';
 		tiltEnabled?: boolean;
 		maxTilt?: number;
-		children: any;
+		children: Snippet;
 	} = $props();
 </script>
 

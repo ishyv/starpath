@@ -1,15 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { scrollY } from '$lib/stores/scroll';
 
 	let scrolled = $state(false);
 	let mobileOpen = $state(false);
 
-	onMount(() => {
-		const onScroll = () => {
-			scrolled = window.scrollY > window.innerHeight * 0.75;
-		};
-		window.addEventListener('scroll', onScroll, { passive: true });
-		return () => window.removeEventListener('scroll', onScroll);
+	$effect(() => {
+		scrolled = $scrollY > window.innerHeight * 0.75;
 	});
 
 	const navItems = [
